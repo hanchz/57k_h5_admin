@@ -17,7 +17,6 @@ class Login extends MY_Controller{
     public function login()
     {
         $this->load->driver('cache',array('adapter' => 'redis'));
-
         $params = $this->input->post();
 
         if((empty($params['username']) || is_null($params['username']) ) || (empty($params['password']) || is_null($params['password']) ))

@@ -26,6 +26,12 @@
             </a>
         </li>
         <li class="last ">
+            <a href="/games">
+                <i class="icon-bar-chart"></i>
+                <span class="title">games</span>
+            </a>
+        </li>
+        <li class="last ">
             <a href="/config">
                 <i class="icon-bar-chart"></i>
                 <span class="title">config</span>

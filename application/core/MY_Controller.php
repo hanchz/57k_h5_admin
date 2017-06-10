@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+
         if( $this->is_login !== false ) {
             $this->load->driver('cache', array('adapter' => 'redis'));
             $this->load->helper('url');
@@ -19,10 +20,12 @@ class MY_Controller extends CI_Controller {
     /**
      * check login
      */
+
     protected function check_login () {
         $this->load->driver('cache',array('adapter' => 'redis'));
         $request_info = $this->is_ajax_request();
         $ad_user_cookie = $this->input->cookie($this->config->config['cp_user_cookie_name']);
+
         if(is_null($ad_user_cookie))
         {
             if($request_info == false)
