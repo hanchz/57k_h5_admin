@@ -1,0 +1,12 @@
+CREATE TABLE `cp_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `salt` varchar(6) NOT NULL,
+  `aid` tinyint(2) NOT NULL DEFAULT '0',
+  `is_delete` tinyint(2) NOT NULL DEFAULT '0',
+  `reg_date` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+1	admin	84816b9a0737145dd7fdc43820a36868	aelt	0	0	0
