@@ -4,41 +4,44 @@ var TableManaged = function () {
 
         //main function to initiate the module
         init: function () {
-            
             if (!jQuery().dataTable) {
                 return;
             }
 
             // begin first table
             $('#sample_1').dataTable({
+                "bServerSide": true,
+                'bPaginate': true, //是否分页
+                "bProcessing": true, //datatable获取数据时候是否显示正在处理提示信息。
+                "iDisplayLength": 10, //每页显示10条记录
+                'bFilter': true, //是否使用内置的过滤功能
+                "sAjaxSource": '/games/get_list',
+                "aaSorting": [
+                    [0, "desc"],
+                ],
                 "aoColumns": [
-                  { "bSortable": false },
-                  null,
-                  { "bSortable": false },
-                  null,
-                  { "bSortable": false },
-                  { "bSortable": false }
+                    {"mData": "id", "bSortable": true, "bSearchable": true, "sWidth": "250px"},
+                    {"mData": "name", "bSortable": true, "bSearchable": true},
+                    {"mData": "gametype", "bSortable": true, "bSearchable": true},
+                    {"mData": "about", "bSortable": true, "bSearchable": true},
+                    {"mData": "size", "bSortable": true, "bSearchable": true},
+                    {"mData": "type", "bSortable": true, "bSearchable": true},
+                    {"mData": "id", "bSortable": true, "mRender": function(data, type, full) {
+                        return "<a href='/games/edit/"+data+"' >修改</a>";
+                    }}
+                    // {"sWidth": "220px", "mData": "storageSize", "bSortable": true, "mRender": function(data, type, full) {
+                    //     return "" + data + "";
+                    // }
+                    // }
                 ],
-                "aLengthMenu": [
-                    [5, 15, 20, -1],
-                    [5, 15, 20, "All"] // change per page values here
-                ],
-                // set the initial value
-                "iDisplayLength": 5,
-                "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
-                "sPaginationType": "bootstrap",
                 "oLanguage": {
-                    "sLengthMenu": "_MENU_ records per page",
-                    "oPaginate": {
-                        "sPrevious": "Prev",
-                        "sNext": "Next"
-                    }
+                    'sSearch': '数据筛选:',
+                    "sLengthMenu": "每页显示 _MENU_ 项记录",
+                    "sZeroRecords": "没有符合项件的数据...",
+                    "sInfo": "当前数据为从第 _START_ 到第 _END_ 项数据；总共有 _TOTAL_ 项记录",
+                    "sInfoEmpty": "显示 0 至 0 共 0 项",
+                    "sInfoFiltered": "(_MAX_)"
                 },
-                "aoColumnDefs": [{
-                        'bSortable': false,
-                        'aTargets': [0]
-                    }
-                ]
             });
 
             jQuery('#sample_1 .group-checkable').change(function () {

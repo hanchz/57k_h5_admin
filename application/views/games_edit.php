@@ -140,13 +140,14 @@
 							</div>
 							<div class="portlet-body form">
 								<!-- BEGIN FORM-->
-								<h3>创建游戏</h3>
-                                <form action="/games/do_create" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="form-horizontal">
+								<h3>修改游戏</h3>
+                                <form action="/games/do_edit" enctype="multipart/form-data" method="post" accept-charset="utf-8" class="form-horizontal">
 
                                 <div class="control-group">
                                     <label class="control-label">游戏名称<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input name="gamename" type="text" class="span6 m-wrap" />
+                                        <input name="id" type="text" class="span6 m-wrap" style="display:none;" value="<?php echo $id; ?>" />
+                                        <input name="gamename" type="text" class="span6 m-wrap" value="<?php echo $name; ?>" />
                                         <span class="help-inline"></span>
                                     </div>
                                 </div>
@@ -156,10 +157,10 @@
                                         <div class="controls">
                                             <select name = "gametype" class="span6 m-wrap" data-placeholder="Choose a Category" tabindex="1">
                                                 <option value="">Select...</option>
-                                                <option value="1">类型 1</option>
-                                                <option value="2">类型 2</option>
-                                                <option value="3">类型 5</option>
-                                                <option value="4">类型 4</option>
+                                                <option value="1" <?php if($gametype == 1){ echo 'selected="selected"';} ?>>类型 1</option>
+                                                <option value="2" <?php if($gametype == 2){ echo 'selected="selected"';} ?>>类型 2</option>
+                                                <option value="3" <?php if($gametype == 3){ echo 'selected="selected"';} ?>>类型 5</option>
+                                                <option value="4" <?php if($gametype == 4){ echo 'selected="selected"';} ?>>类型 4</option>
                                             </select>
                                         </div>
                                     </div>
@@ -167,7 +168,7 @@
                                     <div class="control-group">
                                         <label class="control-label">游戏大小<span class="required">*</span></label>
                                         <div class="controls">
-                                            <input name="gamesize" type="text" class="span6 m-wrap" />
+                                            <input name="gamesize" type="text" class="span6 m-wrap" value="<?php echo $size; ?>" />
                                             <span class="help-inline"></span>
                                         </div>
                                     </div>
@@ -175,7 +176,7 @@
                                     <div class="control-group">
                                         <label class="control-label">下载次数<span class="required">*</span></label>
                                         <div class="controls">
-                                            <input name="downnum" type="text" class="span6 m-wrap" />
+                                            <input name="downnum" type="text" class="span6 m-wrap" value="<?php echo $downnum; ?>" />
                                             <span class="help-inline"></span>
                                         </div>
                                     </div>
@@ -183,7 +184,7 @@
                                     <div class="control-group">
                                         <label class="control-label">游戏链接<span class="required">*</span></label>
                                         <div class="controls">
-                                            <textarea name="url" type="text" class="span6 m-wrap" ></textarea>
+                                            <input name="url" type="text" class="span6 m-wrap" value="<?php echo $url; ?>" />
                                             <span class="help-inline"></span>
                                         </div>
                                     </div>
@@ -191,7 +192,7 @@
                                     <div class="control-group">
                                         <label class="control-label">游戏介绍<span class="required">*</span></label>
                                         <div class="controls">
-                                            <textarea name="about" type="text" class="span6 m-wrap" ></textarea>
+                                            <textarea name="about" type="text" class="span6 m-wrap" value="<?php echo $about; ?>" ></textarea>
                                             <span class="help-inline"></span>
                                         </div>
                                     </div>
@@ -331,15 +332,15 @@
                                         <label class="control-label">是否推荐<span class="required">*</span></label>
                                         <div class="controls">
                                             <label class="radio">
-                                                <input type="radio" name="tj" value="1" checked />
+                                                <input type="radio" name="tj" value="1" <?php if($type == 1){ echo 'checked';} ?> />
                                                 精品
                                             </label>
                                             <label class="radio">
-                                                <input type="radio" name="tj" value="2"  />
+                                                <input type="radio" name="tj" value="2" <?php if($type == 2){ echo 'checked';} ?> />
                                                 人气
                                             </label>
                                             <label class="radio">
-                                                <input type="radio" name="tj" value="3"  />
+                                                <input type="radio" name="tj" value="3" <?php if($type == 3){ echo 'checked';} ?> />
                                                 普通
                                             </label>
                                         </div>
